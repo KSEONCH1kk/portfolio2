@@ -15,7 +15,7 @@ type LocaleKey = `${SkillCategory}Skills`;
 const locales: Record<'ru' | 'en', Record<LocaleKey | 'greeting' | 'about' | 'viewAllSkills' | 'viewAllProjects' | 'skillsDescription', string>> = {
   ru: {
     greeting: 'Привет! Я',
-    about: 'Frontend разработчик с страстью к созданию красивых и функциональных веб-приложений.',
+    about: 'Привет! Мне 14 лет, я фуллстак-разработчик, работаю с Typescript. Пишу фронтенд на Next.js и React, бекенд и ботов на Python. Сейчас изучаю Java для моддинга Minecraft и разрабатываю плагины для серверов в свободное время. Готов принять заказы на создание фронтенда, бекенда или ботов. Если вас это интересует — свяжитесь со мной!',
     viewAllSkills: 'Просмотреть все навыки',
     viewAllProjects: 'Посмотреть все проекты',
     skillsDescription: 'Языки, которые я хочу выучить, фреймворки, с которыми я работаю, и прочие классные штуки!',
@@ -25,7 +25,7 @@ const locales: Record<'ru' | 'en', Record<LocaleKey | 'greeting' | 'about' | 'vi
   },
   en: {
     greeting: 'Hi! I\'m',
-    about: 'Frontend developer passionate about creating beautiful and functional web applications.',
+    about: 'Hi! I\'m 14 years old and a full-stack developer specializing in TypeScript. I work on the frontend using Next.js and React, and on the backend and bots with Python. Currently, I\'m learning Java for Minecraft modding and developing plugins for servers in my free time. I\'m open for orders to create frontend, backend, or bots. If you\'re interested, feel free to reach out!',
     viewAllSkills: 'View all skills',
     viewAllProjects: 'View all projects',
     skillsDescription: 'Languages I want to learn, frameworks I work with, and other cool stuff!',
@@ -99,6 +99,31 @@ const projects: Project[] = [
     image: '/project1.png'
   }
 ];
+
+type ProjectCategory = 'personal' | 'commercial' | 'frontend' | 'backend' | 'bots';
+
+const categoryLocales: Record<ProjectCategory, { ru: string; en: string }> = {
+  personal: { ru: 'Личные проекты', en: 'Personal Projects' },
+  frontend: { ru: 'Фронтенд', en: 'Frontend' },
+  backend: { ru: 'Бекенд', en: 'Backend' },
+  commercial: { ru: 'Проекты на заказ', en: 'Commercial Projects' },
+  bots: { ru: 'Боты', en: 'Bots' }
+};
+
+const featuredProject = {
+  title: 'Portfolio Website',
+  description: {
+    ru: 'Персональный веб-сайт портфолио с анимациями и интерактивными элементами',
+    en: 'Personal portfolio website with animations and interactive elements'
+  },
+  tech: [
+    { name: 'Next.js', version: '15.1.3', icon: <SiNextdotjs className="text-white" /> },
+    { name: 'TypeScript', version: '5.0.0', icon: <SiTypescript className="text-blue-400" /> },
+    { name: 'TailwindCSS', version: '3.3.0', icon: <SiTailwindcss className="text-cyan-400" /> }
+  ],
+  image: '/project1.png',
+  categories: ['personal', 'frontend']
+};
 
 export default function Home() {
   const [lang, setLang] = useState<'ru' | 'en'>('ru');
@@ -258,59 +283,62 @@ export default function Home() {
           </div>
           <div className="bg-black/40 backdrop-blur-sm p-6 rounded-lg border border-zinc-800">
             <div className="grid grid-cols-1 gap-6">
-              {projects.map((project, index) => (
-                <div 
-                  key={index}
-                  className="group relative flex flex-col md:flex-row gap-6 p-6 rounded-lg 
-                    border border-zinc-800/50 hover:border-zinc-700 transition-all duration-300 
-                    hover:shadow-[0_0_30px_rgba(239,68,68,0.15)] bg-black/20 backdrop-blur-sm 
-                    overflow-hidden"
-                >
-                  {/* Фоновое изображение */}
-                  {project.image ? (
-                    <div className="absolute inset-0 -z-10">
-          <Image
-                        src={project.image}
-                        alt=""
-                        fill
-                        className="object-cover opacity-5 blur-xl scale-110"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-br from-black/90 via-black/80 to-black/90" />
-                    </div>
-                  ) : (
-                    <div className="absolute inset-0 -z-10 bg-gradient-to-br from-zinc-900/50 via-black to-zinc-900/50" />
-                  )}
+              <div 
+                className="group relative flex flex-col gap-6 p-6 pt-14 rounded-lg 
+                  border border-zinc-800/50 hover:border-zinc-700 transition-all duration-300 
+                  hover:shadow-[0_0_30px_rgba(239,68,68,0.15)] bg-black/20 backdrop-blur-sm 
+                  overflow-hidden"
+              >
+                {featuredProject.image && (
+                  <div className="absolute inset-0 -z-10">
+                    <Image
+                      src={featuredProject.image}
+                      alt=""
+                      fill
+                      className="object-cover opacity-5 blur-xl scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-br from-black/90 via-black/80 to-black/90" />
+                  </div>
+                )}
 
-                  {/* Контент */}
-                  <div className="flex-1 flex flex-col">
-                    <h3 className="text-xl font-semibold mb-2 bg-gradient-to-r from-red-500 to-yellow-500 
-                      bg-clip-text text-transparent group-hover:animate-gradient-x relative"
-                    >
-                      {project.title}
-                      <div className="absolute -inset-x-6 -inset-y-2 bg-gradient-to-r from-red-500/10 to-yellow-500/10 
-                        blur-lg opacity-0 group-hover:opacity-100 transition-opacity -z-10" />
-                    </h3>
+                <div className="flex-1 flex flex-col">
+                  <h3 className="text-xl font-semibold mb-2 bg-gradient-to-r from-red-500 to-yellow-500 
+                    bg-clip-text text-transparent group-hover:animate-gradient-x relative"
+                  >
+                    {featuredProject.title}
+                  </h3>
 
-                    <p className="text-zinc-400 mb-6 flex-grow group-hover:text-zinc-300 transition-colors">
-                      {lang === 'ru' ? project.description.ru : project.description.en}
-                    </p>
+                  <p className="text-zinc-400 mb-6 flex-grow group-hover:text-zinc-300 transition-colors">
+                    {featuredProject.description[lang]}
+                  </p>
 
-                    <div className="flex flex-wrap gap-3">
-                      {project.tech.map(tech => (
-                        <div 
-                          key={tech.name}
-                          className="flex items-center gap-2 text-zinc-400 group-hover:text-zinc-300 
-                            transition-colors"
-                        >
-                          {tech.icon}
-                          <span className="text-sm">{tech.name}</span>
-                          <span className="text-xs text-zinc-500">v{tech.version}</span>
-                        </div>
-                      ))}
-                    </div>
+                  <div className="flex flex-wrap gap-3">
+                    {featuredProject.tech.map(tech => (
+                      <div 
+                        key={tech.name}
+                        className="flex items-center gap-2 text-zinc-400 group-hover:text-zinc-300 
+                          transition-colors"
+                      >
+                        {tech.icon}
+                        <span className="text-sm">{tech.name}</span>
+                        <span className="text-xs text-zinc-500">v{tech.version}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
-              ))}
+
+                <div className="absolute top-4 right-4 flex flex-wrap gap-2 justify-end max-w-[calc(100%-2rem)]">
+                  {featuredProject.categories.map(category => (
+                    <span
+                      key={category}
+                      className="px-2 py-1 text-xs rounded-full bg-black/40 border border-zinc-800
+                        text-zinc-400 whitespace-nowrap"
+                    >
+                      {categoryLocales[category as ProjectCategory][lang]}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
