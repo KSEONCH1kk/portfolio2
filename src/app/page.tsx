@@ -361,7 +361,7 @@ export default function Home() {
           <div className="bg-black/40 backdrop-blur-sm p-4 rounded-lg border border-zinc-800">
             <div className="flex justify-center gap-6">
               <a 
-                href="https://github.com/your-username" 
+                href="https://github.com/KSEONCH1kk" 
                 className="text-2xl hover:text-red-500 transition-all hover:scale-125"
           target="_blank"
           rel="noopener noreferrer"
@@ -369,7 +369,7 @@ export default function Home() {
                 <FaGithub />
         </a>
         <a
-                href="https://t.me/your-username" 
+                href="https://t.me/kseonyt" 
                 className="text-2xl hover:text-yellow-500 transition-all hover:scale-125"
           target="_blank"
           rel="noopener noreferrer"
