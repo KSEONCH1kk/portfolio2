@@ -1,0 +1,423 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-rgb: 0, 0, 0;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+}
+
+.glow {
+  animation: glow 3s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 
+      0 0 20px #ff4545,
+      0 0 30px #ff4545,
+      0 0 40px #ff4545,
+      0 0 50px #ff4545;
+  }
+  to {
+    text-shadow: 
+      0 0 10px #ffd700,
+      0 0 20px #ffd700,
+      0 0 30px #ffd700,
+      0 0 40px #ffd700;
+  }
+}
+
+.glow-soft {
+  animation: glow-soft 3s ease-in-out infinite alternate;
+}
+
+@keyframes glow-soft {
+  from {
+    text-shadow: 
+      0 0 40px rgba(255, 69, 69, 0.3),
+      0 0 80px rgba(255, 69, 69, 0.3),
+      0 0 120px rgba(255, 69, 69, 0.3);
+  }
+  to {
+    text-shadow: 
+      0 0 40px rgba(255, 215, 0, 0.3),
+      0 0 80px rgba(255, 215, 0, 0.3),
+      0 0 120px rgba(255, 215, 0, 0.3);
+  }
+}
+
+.animate-gradient-x {
+  background-size: 200% auto;
+  animation: gradient-x 2s linear infinite;
+  background-image: linear-gradient(
+    to right,
+    #ff4545,
+    #ffd700,
+    #ff4545
+  );
+}
+
+@keyframes gradient-x {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.6s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s ease-out forwards;
+}
+
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+.delay-5 { animation-delay: 0.5s; }
+
+.hover-scale {
+  transition: transform 0.2s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.pulse-slow {
+  animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Анимации для карточек */
+.card-hover {
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.card-hover:hover {
+  transform: translateY(-5px) rotateX(2deg);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Анимация появления */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Анимация пульсации для иконок */
+@keyframes iconPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* Анимация градиента фона */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Анимация для текста */
+@keyframes textShine {
+  from {
+    background-position: 0%;
+  }
+  to {
+    background-position: 200%;
+  }
+}
+
+/* Применение анимаций */
+.animate-slide-in {
+  animation: slideIn 0.6s ease-out forwards;
+}
+
+.animate-icon-pulse {
+  animation: iconPulse 2s ease-in-out infinite;
+}
+
+.animate-gradient-move {
+  background: linear-gradient(90deg, #ff4545, #ffd700, #ff4545);
+  background-size: 200% 100%;
+  animation: gradientMove 10s linear infinite;
+}
+
+.animate-text-shine {
+  background: linear-gradient(
+    to right,
+    #ff4545 20%,
+    #ffd700 40%,
+    #ffd700 60%,
+    #ff4545 80%
+  );
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textShine 3s linear infinite;
+}
+
+/* Анимация для карточек при появлении */
+.card-appear {
+  animation: cardAppear 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes cardAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Задержки для каскадной анимации */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+
+/* Добавьте новую анимацию */
+@keyframes skillAppear {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.skill-appear {
+  animation: skillAppear 0.5s ease-out forwards;
+}
+
+@keyframes skillReveal {
+  from {
+    opacity: 0;
+    height: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    height: var(--skill-height);
+    transform: translateY(0);
+  }
+}
+
+.skill-section {
+  overflow: hidden;
+}
+
+.skill-reveal {
+  --skill-height: auto;
+  animation: skillReveal 0.4s ease-out forwards;
+  transform-origin: top;
+}
+
+.skill-category {
+  opacity: 0;
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.skill-item {
+  opacity: 0;
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes skillsExpand {
+  from {
+    max-height: 0;
+    opacity: 0;
+  }
+  to {
+    max-height: 1000px;
+    opacity: 1;
+  }
+}
+
+.skills-expanded {
+  animation: skillsExpand 0.5s ease-out forwards;
+  overflow: hidden;
+}
+
+.skill-item {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: skillItemAppear 0.3s ease-out forwards;
+}
+
+@keyframes skillItemAppear {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Обновленные анимации для fade-in эффекта */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  opacity: 0;
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+/* Задержки для разных элементов */
+.delay-1 {
+  animation-delay: 0.2s;
+}
+
+.delay-2 {
+  animation-delay: 0.4s;
+}
+
+.delay-3 {
+  animation-delay: 0.6s;
+}
+
+.delay-4 {
+  animation-delay: 0.8s;
+}
+
+/* Анимация для заголовка */
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-scale {
+  opacity: 0;
+  animation: fadeInScale 0.6s ease-out forwards;
+}
+
+/* Анимации для страницы навыков */
+@keyframes skillCardAppear {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.skill-card {
+  opacity: 0;
+  animation: skillCardAppear 0.5s ease-out forwards;
+}
+
+/* Улучшенная анимация для заголовков категорий */
+@keyframes categoryAppear {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.category-title {
+  opacity: 0;
+  animation: categoryAppear 0.5s ease-out forwards;
+}
+
+/* Плавное появление легенды */
+@keyframes legendAppear {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.legend {
+  opacity: 0;
+  animation: legendAppear 0.4s ease-out forwards;
+}
+
+.filter-fade {
+  animation: fadeIn 0.5s ease-out forwards;
+}
