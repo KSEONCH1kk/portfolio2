@@ -162,7 +162,7 @@ export default function ClientProjects({ initialLang }: ClientProjectsProps) {
                   className="group relative flex flex-col gap-6 p-6 rounded-lg 
                     border border-zinc-800/50 hover:border-zinc-700 transition-all duration-300 
                     hover:shadow-[0_0_30px_rgba(239,68,68,0.15)] bg-black/20 backdrop-blur-sm 
-                    overflow-hidden animate-fade-up"
+                    overflow-hidden"
                   style={{ 
                     opacity: 0,
                     animation: 'fadeIn 0.5s ease-out forwards',
@@ -180,6 +180,20 @@ export default function ClientProjects({ initialLang }: ClientProjectsProps) {
                       <div className="absolute inset-0 bg-gradient-to-br from-black/90 via-black/80 to-black/90" />
                     </div>
                   )}
+
+                  <div className="flex flex-wrap gap-2 md:absolute md:top-4 md:right-4 md:max-w-[calc(100%-2rem)]
+                    order-first md:order-none"
+                  >
+                    {project.categories.map(category => (
+                      <span
+                        key={category}
+                        className="px-2 py-1 text-xs rounded-full bg-black/40 border border-zinc-800
+                          text-zinc-400 whitespace-nowrap"
+                      >
+                        {categoryLocales[category][lang]}
+                      </span>
+                    ))}
+                  </div>
 
                   <div className="flex-1 flex flex-col">
                     <h3 className="text-xl font-semibold mb-2 bg-gradient-to-r from-red-500 to-yellow-500 
@@ -205,18 +219,6 @@ export default function ClientProjects({ initialLang }: ClientProjectsProps) {
                         </div>
                       ))}
                     </div>
-                  </div>
-
-                  <div className="absolute top-4 right-4 flex flex-wrap gap-2 justify-end max-w-[calc(100%-2rem)]">
-                    {project.categories.map(category => (
-                      <span
-                        key={category}
-                        className="px-2 py-1 text-xs rounded-full bg-black/40 border border-zinc-800
-                          text-zinc-400 whitespace-nowrap"
-                      >
-                        {categoryLocales[category][lang]}
-                      </span>
-                    ))}
                   </div>
                 </div>
               ))
